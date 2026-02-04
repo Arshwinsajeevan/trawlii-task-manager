@@ -126,7 +126,16 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CORS_ALLOW_ALL_ORIGINS = DEBUG  # True in dev, False in prod
-CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',') if os.environ.get('CORS_ALLOWED_ORIGINS') else []
+CORS_ALLOW_ALL_ORIGINS = DEBUG  # Default True in dev
+cors_allowed_origins_env = os.environ.get('CORS_ALLOWED_ORIGINS')
+
+if cors_allowed_origins_env:
+    if cors_allowed_origins_env == '*':
+        CORS_ALLOW_ALL_ORIGINS = True
+    else:
+        CORS_ALLOWED_ORIGINS = cors_allowed_origins_env.split(',')
+
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

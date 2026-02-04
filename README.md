@@ -2,6 +2,9 @@
 
 A simple, mobile-friendly Task Manager web application built with React (Frontend) and Django (Backend).
 
+5️⃣ Live URL
+https://trawlii-task-manager.vercel.app/
+
 ## Tech Stack
 - **Frontend**: React (Vite), CSS, Axios, Lucide React.
 - **Backend**: Python, Django, Django REST Framework.
